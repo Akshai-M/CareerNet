@@ -13,7 +13,53 @@ dotenv.config({})
 export const register = async (req, res) => {
 
     const hardcodedPassword = process.env.ADMIN_PASSKEY
-    
+    try {
+        const { fullname, email, phoneNumber, password, role } = req.body;
+         
+        if (!fullname || !email || !phoneNumber || !password || !role) {
+            return res.status(400).json({
+                message: "Something is missing",
+                success: false
+            });
+        };
+        if (role === "recruiter") {
+            
+            if (password !== hardcodedPassword) {
+              return res.status(400).json({ message: "Invalid recruiter credentials", success: false });
+            }
+          }
+
+        const file = req.file;
+        const fileUri = getDataUri(file);
+        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
+        const user = await User.findOne({ email });
+        if (user) {
+            return res.status(400).json({
+                message: 'User already exist with this email.',
+                success: false,
+            })
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        await User.create({
+            fullname,
+            email,
+            phoneNumber,
+            password: hashedPassword,
+            role,
+            profile:{
+                profilePhoto:cloudResponse.secure_url,
+            }
+        });
+
+        return res.status(201).json({
+            message: "Account created successfully.",
+            success: true
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 export const login = async (req, res) => {
     try {
