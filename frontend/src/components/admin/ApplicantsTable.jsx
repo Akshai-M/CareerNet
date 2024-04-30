@@ -47,7 +47,16 @@ const ApplicantsTable = () => {
             A list of your recent applied users
           </TableCaption>
           <TableHeader >
-         
+            <TableRow>
+              <TableHead className="py-2 px-4">FullName</TableHead>
+              <TableHead className="py-2 px-4">Email</TableHead>
+              <TableHead className="py-2 px-4">Contact</TableHead>
+              <TableHead className="py-2 px-4">Resume</TableHead>
+              <TableHead className="py-2 px-4">Skills</TableHead>
+              <TableHead className="py-2 px-4">Date</TableHead>
+              <TableHead className="py-2 px-4">Status</TableHead>
+              <TableHead className="py-2 px-4 text-right">Action</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
             {applicants?.applications?.length > 0 ? (
