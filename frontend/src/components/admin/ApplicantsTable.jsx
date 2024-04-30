@@ -80,8 +80,30 @@ const ApplicantsTable = () => {
                     )}
                   </TableCell>
                  
-                  
-                
+                  <TableCell className="py-2 px-4">
+                    {new Date(item?.applicant.createdAt).toLocaleDateString()}
+                  </TableCell>
+                  <TableCell className="py-2 px-4">
+                    {item?.status.charAt(0).toUpperCase() + item?.status.slice(1).toLowerCase()}
+                  </TableCell>
+                  <TableCell className="py-2 px-4 text-right">
+                    <Popover>
+                      <PopoverTrigger className="cursor-pointer p-2 rounded-full ">
+                        <MoreHorizontal />
+                      </PopoverTrigger>
+                      <PopoverContent className="w-40 dark:bg-black shadow-md rounded-md p-2">
+                        {shortlistingStatus.map((status, index) => (
+                          <div
+                            key={index}
+                            onClick={() => statusHandler(status, item?._id)}
+                            className="flex items-center gap-2 px-2 py-1 rounded dark:textcolor cursor-pointer"
+                          >
+                            <span>{status.charAt(0).toUpperCase() + status.slice(1).toLowerCase()}</span>
+                          </div>
+                        ))}
+                      </PopoverContent>
+                    </Popover>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
