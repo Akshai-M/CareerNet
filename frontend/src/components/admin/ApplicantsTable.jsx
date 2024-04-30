@@ -79,7 +79,22 @@ const ApplicantsTable = () => {
                       <span className="text-gray-500">NA</span>
                     )}
                   </TableCell>
-                 
+                  <TableCell className="py-2 px-4">
+                    {item?.applicant?.profile?.skills?.length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {item.applicant.profile.skills.map((skill, index) => (
+                          <span
+                            key={index}
+                            className="dark:bg-gray-200 dark:text-black text-sm px-2 py-1 rounded-full"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="text-gray-500">NA</span>
+                    )}
+                  </TableCell>
                   <TableCell className="py-2 px-4">
                     {new Date(item?.applicant.createdAt).toLocaleDateString()}
                   </TableCell>
