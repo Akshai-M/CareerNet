@@ -5,5 +5,12 @@ const jobSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
+    requirements: [{
+        type: String
+    }],
 },{timestamps:true});
 export const Job = mongoose.model("Job", jobSchema);
