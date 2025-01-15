@@ -18,9 +18,7 @@ const AppliedJobTable = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {allAppliedJobs.length <= 0 ? (
-                
-              ) : (
+              {allAppliedJobs.length <= 0 ? () : (
                 allAppliedJobs.map((appliedJob) => (
                   <TableRow key={appliedJob._id}>
                     <TableCell className="text-gray-700 dark:text-gray-300">{appliedJob?.createdAt?.split("T")[0]}</TableCell>
