@@ -19,9 +19,28 @@ const AppliedJobTable = () => {
             </TableHeader>
             <TableBody>
               {allAppliedJobs.length <= 0 ? (
-
+                
               ) : (
-                )
+                allAppliedJobs.map((appliedJob) => (
+                  <TableRow key={appliedJob._id}>
+                    <TableCell className="text-gray-700 dark:text-gray-300">{appliedJob?.createdAt?.split("T")[0]}</TableCell>
+                    <TableCell className="text-gray-700 dark:text-gray-300">{appliedJob.job?.title}</TableCell>
+                    <TableCell className="text-gray-700 dark:text-gray-300">{appliedJob.job?.company?.name}</TableCell>
+                    <TableCell className="text-right">
+                      <Badge
+                        className={`${
+                          appliedJob?.status === "rejected"
+                            ? "bg-red-500 text-white"
+                            : appliedJob.status === "pending"
+                            ? "bg-yellow-500 text-white"
+                            : "bg-green-500 text-white"
+                        } px-3 py-1 rounded-full text-xs font-semibold`}
+                      >
+                        {appliedJob.status.toUpperCase()}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))
               )}
             </TableBody>
             
