@@ -30,7 +30,12 @@ const HeroSection = () => {
             onChange={(e) => setQuery(e.target.value)}
             className="outline-none bg-transparent  border-none w-full"
           />
-         
+          <Button
+            onClick={searchJobHandler}
+            className="rounded-r-full bg-blue-600 hover:bg-blue-400"
+          >
+            <Search className="h-5 w-5 " />
+          </Button>
         </div>
       </div>
     </div>
