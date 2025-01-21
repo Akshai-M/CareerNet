@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchedQuery } from "@/redux/jobSlice";
 import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((store) => store.auth);
 
   const searchJobHandler = () => {
     dispatch(setSearchedQuery(query));
