@@ -26,7 +26,15 @@ const AdminJobsTable = () => {
     return (
         <div>
             <Table>
-                
+                <TableCaption>A list of your recent  posted jobs</TableCaption>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Company Name</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead>Date</TableHead>
+                        <TableHead className="text-right">Action</TableHead>
+                    </TableRow>
+                </TableHeader>
                 <TableBody>
                     {
                         filterJobs?.map((job) => (
