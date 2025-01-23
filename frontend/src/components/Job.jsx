@@ -17,7 +17,16 @@ const Job = ({ job }) => {
 
   return (
     <div className="p-5 rounded-md shadow-xl dark:bg-black border border-gray-100">
-      
+      <div className="flex items-center justify-between">
+        <p className="text-sm dark:text-gray-500">
+          {daysAgoFunction(job?.createdAt) === 0
+            ? "Today"
+            : `${daysAgoFunction(job?.createdAt)} days ago`}
+        </p>
+        <Button variant="outline" className="rounded-full" size="icon">
+          <Bookmark />
+        </Button>
+      </div>
 
       <div>
         <h1 className="font-bold text-lg my-2">{job?.title}</h1>
