@@ -71,7 +71,12 @@ const JobDescription = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-10 px-6">
-      
+      <Button
+        onClick={returnBack}
+        className="flex items-center space-x-2 text-lg font-semibold text-gray-500 hover:text-black transition-colors duration-300"
+      >
+        <FaLongArrowAltLeft className="text-xl" /> <span>Back</span>
+      </Button>
 
       <div className="flex items-center justify-between my-6 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
         <div>
