@@ -28,7 +28,12 @@ export default function BackgroundLinesDemo() {
       </p>
       <div className="relative z-30 mt-4">
         <div className="">
-          
+          <Cover className="flex">
+           
+            <div className="text-white pt-[0.6rem]">
+              <ChevronRight />
+            </div>
+          </Cover>
         </div>
       </div>
     </BackgroundLines>
