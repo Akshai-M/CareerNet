@@ -29,7 +29,12 @@ export default function BackgroundLinesDemo() {
       <div className="relative z-30 mt-4">
         <div className="">
           <Cover className="flex">
-           
+            <Button
+              className="!border-none !bg-transparent p-2 !shadow-none text-white text-2xl pointer"
+              onClick={routehome}
+            >
+              Let's Go
+            </Button>{" "}
             <div className="text-white pt-[0.6rem]">
               <ChevronRight />
             </div>
