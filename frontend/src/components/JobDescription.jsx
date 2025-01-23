@@ -73,7 +73,45 @@ const JobDescription = () => {
     <div className="max-w-7xl mx-auto my-10 px-6">
       
 
-     
+      <div className="flex items-center justify-between my-6 bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+        <div>
+          <h1 className="font-extrabold text-4xl text-gray-800 dark:text-white">
+            {singleJob?.title}
+          </h1>
+          <div className="flex items-center gap-4 mt-4">
+            <Badge
+              className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md"
+              variant="ghost"
+            >
+              {singleJob?.position} Positions
+            </Badge>
+            <Badge
+              className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md"
+              variant="ghost"
+            >
+              {singleJob?.jobType}
+            </Badge>
+            <Badge
+              className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md"
+              variant="ghost"
+            >
+              {singleJob?.salary} LPA
+            </Badge>
+          </div>
+        </div>
+
+        <Button
+          onClick={isApplied ? null : applyJobHandler}
+          disabled={isApplied}
+          className={`rounded-lg py-3 px-8 font-semibold text-white transition-all duration-200 ease-in-out ${
+            isApplied
+              ? "bg-gray-600 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-500"
+          }`}
+        >
+          {isApplied ? "Already Applied" : "Apply Now"}
+        </Button>
+      </div>
 
       <h1 className="border-b-2 border-gray-300 font-medium py-4 text-2xl mt-6 text-gray-800 dark:text-white">
         Job Description
