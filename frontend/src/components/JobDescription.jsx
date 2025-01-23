@@ -79,7 +79,50 @@ const JobDescription = () => {
         Job Description
       </h1>
 
-     
+      <div className="my-6 space-y-4">
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Role:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.title}
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Location:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.location}
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Description:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.description}
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Experience:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.experienceLevel} yrs
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Salary:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.salary} LPA
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Total Applicants:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.applications?.length}
+          </span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">
+          Posted Date:
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.createdAt.split("T")[0]}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
