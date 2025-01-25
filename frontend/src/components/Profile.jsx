@@ -22,7 +22,12 @@ const Profile = () => {
           <Navbar />
           <div className="max-w-4xl mx-auto dark:bg-gray-900 border border-gray-300 rounded-2xl my-6 p-8 shadow-lg">
             
-           
+            <div className="flex justify-between">
+              
+              <Button onClick={() => setOpen(true)} className="text-right p-3" variant="outline">
+                <Pen />
+              </Button>
+            </div>
       
             
       
