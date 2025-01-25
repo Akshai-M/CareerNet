@@ -104,7 +104,16 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
               className='dark:bg-black cursor-not-allowed'
             />
           </div>
-         
+          <div>
+            <Label className='dark:textcolor'>Phone Number</Label>
+            <Input
+              name="phoneNumber"
+              value={input.phoneNumber}
+              onChange={changeEventHandler}
+              readOnly={true}
+              className='dark:bg-black cursor-not-allowed '
+            />
+          </div>
           <div>
             <Label className='dark:textcolor'>Bio</Label>
             <Input name="bio" value={input.bio} onChange={changeEventHandler} className='dark:bg-black' />
