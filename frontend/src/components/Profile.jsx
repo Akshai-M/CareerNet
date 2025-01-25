@@ -23,7 +23,15 @@ const Profile = () => {
           <div className="max-w-4xl mx-auto dark:bg-gray-900 border border-gray-300 rounded-2xl my-6 p-8 shadow-lg">
             
             <div className="flex justify-between">
-              
+              <div className="flex items-center gap-6">
+                <Avatar className="h-28 w-28 border-4 border-blue-500 rounded-full shadow-lg">
+                  <AvatarImage src={user?.profile?.profilePhoto} alt="profile" />
+                </Avatar>
+                <div>
+                  <h1 className="font-medium text-2xl text-gray-800 dark:text-white">{user?.fullname}</h1>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{user?.profile?.bio}</p>
+                </div>
+              </div>
               <Button onClick={() => setOpen(true)} className="text-right p-3" variant="outline">
                 <Pen />
               </Button>
