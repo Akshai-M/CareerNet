@@ -118,7 +118,14 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             <Label className='dark:textcolor'>Bio</Label>
             <Input name="bio" value={input.bio} onChange={changeEventHandler} className='dark:bg-black' />
           </div>
-          
+          <div>
+            <Label>Skills (comma separated)</Label>
+            <Input 
+              name="skills"
+              value={input.skills}
+              onChange={changeEventHandler}
+            />
+          </div>
           
           <div>
             
