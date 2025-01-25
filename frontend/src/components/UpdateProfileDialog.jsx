@@ -126,7 +126,16 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
               onChange={changeEventHandler}
             />
           </div>
-          
+          <div>
+            <Label className='dark:textcolor'>Resume</Label>
+            <Input
+              name="file"
+              type="file"
+              accept="application/pdf"
+              onChange={fileChangeHandler}
+              className='dark:bg-black'
+            />
+          </div>
           <div>
             
           </div>
