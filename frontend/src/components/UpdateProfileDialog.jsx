@@ -137,7 +137,13 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             />
           </div>
           <div>
-            
+            <Button type="submit" className="w-full bg-blue-600 dark:textcolor" disabled={loading}>
+              {loading ? (
+                <Loader2 className="animate-spin h-4 w-4 mr-2" />
+              ) : (
+                "Update"
+              )}
+            </Button>
           </div>
         </form>
       </div>
