@@ -37,7 +37,16 @@ const Profile = () => {
               </Button>
             </div>
       
-            
+            <div className="my-6">
+              <div className="flex items-center gap-3 my-3 text-gray-700 dark:text-gray-300">
+                <Mail />
+                <span>{user?.email}</span>
+              </div>
+              <div className="flex items-center gap-3 my-3 text-gray-700 dark:text-gray-300">
+                <Contact />
+                <span>{user?.phoneNumber}</span>
+              </div>
+            </div>
       
             
       
