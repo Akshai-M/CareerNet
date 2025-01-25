@@ -13,7 +13,17 @@ const LatestJobCards = ({ job }) => {
         onClick={() => navigate(`/description/${job._id}`)}
         className="max-w-lg mx-auto dark:bg-black shadow-lg rounded-3xl p-6 cursor-pointer "
       >
-        
+        <div className="flex items-center space-x-4 ">
+          <Button className="p-6" variant="outline" size="icon">
+            <Avatar>
+              <AvatarImage src={job?.company?.logo} className="w-10 h-10 " />
+            </Avatar>
+          </Button>
+          <div>
+            <h1 className="font-medium textcolor text-lg">{job?.company?.name}</h1>
+            <p className="text-sm text-gray-600">India</p>
+          </div>
+        </div>
         
         <div className="mt-4">
           <h1 className="font-medium textcolor text-xl">{job?.title}</h1>
