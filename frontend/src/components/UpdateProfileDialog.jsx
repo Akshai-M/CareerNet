@@ -84,7 +84,15 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 </div>
 
         <form onSubmit={submitHandler} className="space-y-4">
-         
+          <div>
+            <Label className='dark:textcolor'>Name</Label>
+            <Input
+              name="fullname"
+              value={input.fullname}
+              onChange={changeEventHandler}
+              className='dark:bg-black'
+            />
+          </div>
           
          
           <div>
