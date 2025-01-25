@@ -93,7 +93,17 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
               className='dark:bg-black'
             />
           </div>
-          
+          <div>
+            <Label className='dark:textcolor'>Email</Label>
+            <Input
+              name="email"
+              type="email"
+              readOnly={true}
+              value={input.email}
+              onChange={changeEventHandler}
+              className='dark:bg-black cursor-not-allowed'
+            />
+          </div>
          
           <div>
             <Label className='dark:textcolor'>Bio</Label>
