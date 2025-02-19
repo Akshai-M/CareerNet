@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import chat_icon from "./auth/react.svg";
+import chat_icon from "./auth/image.png";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -44,7 +44,7 @@ const Chatbot = () => {
       onClick={toggleChatbox}
       className="p-3 bg-blue-600 text-white shadow-md rounded-full flex items-center justify-center z-20 hover:bg-blue-700"
     >
-      <img src={chat_icon} alt="Chat" className="w-6 h-6" />
+      <img src={chat_icon} alt="Chat" className="w-6 h-6 filler invert scale-150"  />
     </button>
   
     {isOpen && (

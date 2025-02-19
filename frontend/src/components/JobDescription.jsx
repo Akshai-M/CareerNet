@@ -39,7 +39,7 @@ const JobDescription = () => {
           ...singleJob,
           applications: [...singleJob.applications, { applicant: user?._id }],
         };
-        dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update
+        dispatch(setSingleJob(updatedSingleJob)); 
         toast.success(res.data.message);
       }
     } catch (error) {
@@ -60,7 +60,7 @@ const JobDescription = () => {
             res.data.job.applications.some(
               (application) => application.applicant === user?._id
             )
-          ); // Ensure the state is in sync with fetched data
+          );
         }
       } catch (error) {
         console.log(error);
@@ -83,14 +83,14 @@ const JobDescription = () => {
           <h1 className="font-extrabold text-4xl text-gray-800 dark:text-white">{singleJob?.title}</h1>
           <div className="flex items-center gap-4 mt-4">
             <Badge className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md" variant="ghost">
-                        {singleJob?.position} Positions
-                      </Badge>
-                      <Badge className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md" variant="ghost">
-                        {singleJob?.jobType}
-                      </Badge>
-                      <Badge className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md" variant="ghost">
-                        {singleJob?.salary} LPA
-                      </Badge>
+              {singleJob?.position} Positions
+            </Badge>
+            <Badge className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md" variant="ghost">
+              {singleJob?.jobType}
+            </Badge>
+            <Badge className="dark:bg-gray-400 text-blue-700 font-semibold px-4 py-2 rounded-md" variant="ghost">
+              {singleJob?.salary} LPA
+            </Badge>
           </div>
         </div>
   
@@ -128,6 +128,11 @@ const JobDescription = () => {
         </div>
         <div className="text-lg font-bold text-gray-800 dark:text-white">Posted Date: 
           <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">{singleJob?.createdAt.split("T")[0]}</span>
+        </div>
+        <div className="text-lg font-bold text-gray-800 dark:text-white">Skills Required: 
+          <span className="pl-4 font-normal text-gray-700 dark:text-gray-400">
+            {singleJob?.requirements?.join(", ")}
+          </span>
         </div>
       </div>
     </div>

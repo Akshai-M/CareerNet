@@ -8,7 +8,7 @@ import { setSearchedQuery } from '@/redux/jobSlice';
 const category = [
     "Frontend Developer",
     "Backend Developer",
-    "Data Science",
+    "Web Designer",
     "Graphic Designer",
     "FullStack Developer"
 ]

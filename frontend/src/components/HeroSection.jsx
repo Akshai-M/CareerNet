@@ -11,14 +11,18 @@ const HeroSection = () => {
   const { user } = useSelector((store) => store.auth);
 
   const searchJobHandler = () => {
-    dispatch(setSearchedQuery(query));
-    navigate("/browse");
+    if (query.trim()) {
+      dispatch(setSearchedQuery(query));
+      navigate("/browse");
+    } else {
+      alert("Please enter a search query.");
+    }
   };
 
   return (
     <div className="text-center">
       <div className="flex flex-col gap-5 my-10">
-        <span className=" mx-auto px-4 py-2 text-4xl font-bold font-serif  bg-gradient-to-r from-blue-700 via-purple-400 to-[#ee622f] text-transparent bg-clip-text">
+        <span className=" mx-auto px-4 py-2 text-4xl font-bold font-serif  bg-gradient-to-r from-blue-700 via-purple-600 to-[#ee622f] text-transparent bg-clip-text">
           Hi,{user?.fullname}!
         </span>
         
@@ -27,6 +31,7 @@ const HeroSection = () => {
           <input
             type="text"
             placeholder="Find your dream jobs by role"
+            value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="outline-none bg-transparent  border-none w-full"
           />
