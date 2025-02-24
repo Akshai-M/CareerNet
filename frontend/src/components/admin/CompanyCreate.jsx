@@ -4,7 +4,7 @@ import { Label } from '../ui/label';
 import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { COMPANY_API_END_POINT } from '@/utils/constant';
+// import { COMPANY_ } from '@/utils/constant';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import { setSingleCompany } from '@/redux/companySlice';
@@ -18,7 +18,7 @@ const CompanyCreate = () => {
     const registerNewCompany = async () => {
         try {
             const res = await axios.post(
-                `${COMPANY_API_END_POINT}/register`,
+                `${import.meta.env.VITE_COMPANY_}/register`,
                 { companyName },
                 {
                     headers: {
