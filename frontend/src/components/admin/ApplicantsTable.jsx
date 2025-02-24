@@ -13,7 +13,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
 
 import axios from "axios";
 const shortlistingStatus = ["Accepted", "Rejected"];
@@ -27,7 +26,7 @@ const ApplicantsTable = () => {
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.post(
-        `${APPLICATION_API_END_POINT}/status/${id}/update`,
+        `${import.meta.env.VITE_APPLICATION_}/status/${id}/update`,
         { status }
       );
       console.log(res);
