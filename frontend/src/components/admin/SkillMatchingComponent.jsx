@@ -7,38 +7,55 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-  TableFooter,
 } from "../ui/table";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
-
 import axios from "axios";
+
 const SkillMatchingComponent = () => {
   const { applicants } = useSelector((store) => store.application);
-  
+  const pendingApplicants = applicants?.applications?.filter(item => item.status.toLowerCase() === "pending") || [];
 
-  const statusHandler = async (status, id) => {
-    console.log("called");
+  const statusHandler = async (status) => {
+    if (pendingApplicants.length === 0) {
+      toast.info("No pending applicants to update.");
+      return;
+    }
+
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.post(
-        `${APPLICATION_API_END_POINT}/status/${id}/update`,
-        { status }
+        `${import.meta.env.VITE_APPLICATION_API_END_POINT}/status/bulk-update`,
+        {
+          status,
+          applicantIds: pendingApplicants.map((item) => item._id), // Sending all pending applicant IDs
+        }
       );
-      console.log(res);
+
       if (res.data.success) {
-        toast.success(res.data.message);
+        toast.success(`All applicants marked as ${status.toLowerCase()}`);
       }
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
 
   return (
     <div className="p-4">
+      <div className="mb-4 inline-flex">
+        <input
+          type="text"
+          placeholder="Enter skills (comma-separated)"
+          
+          className="border p-2 w-full"
+        />
+        <button
+          className="mt-2 px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+          
+        >
+          Filter Applicants
+        </button>
+      </div>
       <div className="overflow-x-auto">
         <Table className="min-w-full border dark:bg-gray-800 rounded-3xl outline-none">
           <TableCaption className="text-lg font-semibold text-gray-600">
@@ -47,12 +64,28 @@ const SkillMatchingComponent = () => {
           <TableHeader>
             <TableRow>
               <TableHead className="py-2 px-4">Resume</TableHead>
-              <TableHead className="py-2 px-4 text-right">Status</TableHead>
+              <TableHead className="py-2 px-4">Status</TableHead>
+              {pendingApplicants.length > 0 && (
+        <div className="mt-4 flex justify-end gap-2">
+          <button
+            className="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600"
+            onClick={() => statusHandler("Accepted")}
+          >
+            Accept All
+          </button>
+          <button
+            className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600"
+            onClick={() => statusHandler("Rejected")}
+          >
+            Reject All
+          </button>
+        </div>
+      )}
             </TableRow>
           </TableHeader>
           <TableBody>
-            {applicants?.applications?.length > 0 ? (
-              applicants.applications.map((item) => (
+            {pendingApplicants.length > 0 ? (
+              pendingApplicants.map((item) => (
                 <TableRow key={item._id}>
                   <TableCell className="py-2 px-4">
                     {item.applicant?.profile?.resume ? (
@@ -68,7 +101,7 @@ const SkillMatchingComponent = () => {
                       <span className="text-gray-500">NA</span>
                     )}
                   </TableCell>
-                  <TableCell className="py-2 px-4 text-right">
+                  <TableCell className="py-2 px-4">
                     {item?.status.charAt(0).toUpperCase() + item?.status.slice(1).toLowerCase()}
                   </TableCell>
                 </TableRow>
@@ -76,15 +109,18 @@ const SkillMatchingComponent = () => {
             ) : (
               <TableRow>
                 <TableCell colSpan={2} className="py-4 text-center text-gray-500">
-                  No applicants found.
+                  No pending applicants found.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
+
+      
     </div>
   );
 };
 
 export default SkillMatchingComponent;
+
