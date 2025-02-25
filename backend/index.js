@@ -16,14 +16,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-    origin: [process.env.FRONTEND_URL, "https://career-net-pi.vercel.app"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], 
-    allowedHeaders: ["Content-Type", "Authorization"],
-};
+app.use(cors({
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            "https://career-net-pi.vercel.app", 
+            process.env.FRONTEND_URL 
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}));
 
-app.use(cors(corsOptions));
 
 app.options("*", cors(corsOptions));
 
