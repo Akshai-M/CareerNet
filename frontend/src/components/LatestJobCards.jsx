@@ -14,9 +14,9 @@ const LatestJobCards = ({ job }) => {
         className="max-w-lg mx-auto dark:bg-black shadow-lg rounded-3xl p-6 cursor-pointer "
       >
         <div className="flex items-center space-x-4 ">
-          <Button className="p-6" variant="outline" size="icon">
+          <Button className="p-6 bg-black" variant="outline" size="icon">
             <Avatar>
-              <AvatarImage src={job?.company?.logo} className="w-10 h-10 " />
+              <AvatarImage src={job?.company?.logo} className="w-10 h-10" />
             </Avatar>
           </Button>
           <div>
