@@ -26,7 +26,7 @@ const LatestJobCards = ({ job }) => {
         </div>
         
         <div className="mt-4">
-          <h1 className="font-medium textcolor text-xl">{job?.title}</h1>
+          <h1 className="font-medium  dark:textcolor text-xl">{job?.title}</h1>
           <p className="text-sm text-gray-400 mt-2">{job?.description}</p>
         </div>
         
