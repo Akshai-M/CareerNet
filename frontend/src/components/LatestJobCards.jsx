@@ -11,7 +11,7 @@ const LatestJobCards = ({ job }) => {
     <div className="dark:bg-gray-400 p-[2px] rounded-3xl">
       <div
         onClick={() => navigate(`/description/${job._id}`)}
-        className="max-w-lg mx-auto dark:bg-black shadow-lg rounded-3xl p-6 cursor-pointer "
+        className="max-w-lg mx-auto bg-white dark:bg-black shadow-lg rounded-3xl p-6 cursor-pointer "
       >
         <div className="flex items-center space-x-4 ">
           <Button className="p-6 bg-black" variant="outline" size="icon">
