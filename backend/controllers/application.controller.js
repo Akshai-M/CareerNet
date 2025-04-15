@@ -128,3 +128,43 @@ export const updateStatus = async (req,res) => {
         console.log(error);
     }
 }
+
+
+export const bulkUpdateStatus = async (req, res) => {
+    try {
+        const { status, applicantIds } = req.body;
+        
+        if (!status || !Array.isArray(applicantIds) || applicantIds.length === 0) {
+            return res.status(400).json({
+                message: "Status and a list of applicant IDs are required.",
+                success: false
+            });
+        }
+
+        const updatedApplications = await Application.updateMany(
+            { _id: { $in: applicantIds } },
+            { $set: { status: status.toLowerCase() } }
+        );
+
+        if (updatedApplications.matchedCount === 0) {
+            return res.status(404).json({
+                message: "No applications found to update.",
+                success: false
+            });
+        }
+
+        return res.status(200).json({
+            message: `All applicants updated to ${status.toLowerCase()}.`,
+            success: true
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "An error occurred while updating the applications.",
+            success: false
+        });
+    }
+};
+
+
