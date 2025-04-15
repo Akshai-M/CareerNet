@@ -29,7 +29,7 @@ const FilterCard = () => {
         dispatch(setSearchedQuery(selectedValue));
     },[selectedValue]);
     return (
-        <div className='w-full dark:bg-black p-3 rounded-md'>
+        <div className='w-full bg-white dark:textcolor dark:bg-black p-3 rounded-md'>
             <h1 className='font-bold text-lg'>Filter Jobs</h1>
             <hr className='mt-3' />
             <RadioGroup value={selectedValue} onValueChange={changeHandler}>
@@ -43,7 +43,7 @@ const FilterCard = () => {
                                     return (
                                         <div className='flex items-center space-x-2 my-2'>
                                             <RadioGroupItem value={item} id={itemId} />
-                                            <Label htmlFor={itemId}>{item}</Label>
+                                            <Label className='dark:textcolor text-black' htmlFor={itemId}>{item}</Label>
                                         </div>
                                     )
                                 })
