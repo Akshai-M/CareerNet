@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchedQuery } from "@/redux/jobSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 const HeroSection = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const HeroSection = () => {
       dispatch(setSearchedQuery(query));
       navigate("/browse");
     } else {
-      alert("Please enter a search query.");
+      toast.error("PLease enter a search query")
     }
   };
 
