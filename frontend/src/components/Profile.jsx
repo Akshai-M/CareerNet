@@ -29,7 +29,15 @@ const Profile = () => {
             
           </div>
 
-          
+          <Button
+            onClick={() => setOpen(true)}
+            variant="outline"
+            size="sm"
+            className="self-start sm:self-auto"
+          >
+            <Edit className="w-4 h-4 mr-2" />
+            Edit Profile
+          </Button>
         </div>
 
         <div className="my-6">
