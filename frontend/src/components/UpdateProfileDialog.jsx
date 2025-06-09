@@ -70,73 +70,84 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     }
   };
 
-  if (!open) return null; 
+  if (!open) return null;
   return (
     <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-      <div className="dark:bg-black p-6 rounded-lg w-full max-w-md">
-        
-      <div className="flex justify-between items-center">
-    <h2 className="text-xl dark:textcolor font-semibold mb-4">Update Profile</h2>
-    <Button onClick={() => setOpen(false)} variant="ghost" size="icon">
-        <IoIosClose />
-    </Button>
-</div>
+      <div className="dark:bg-black bg-white dark:textcolor text-white p-6 rounded-lg w-full max-w-md">
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl dark:textcolor text-black font-semibold mb-4">
+            Update Profile
+          </h2>
+          <Button className="text-black dark:text-white" onClick={() => setOpen(false)} variant="ghost" size="icon">
+            <IoIosClose />
+          </Button>
+        </div>
 
-        <form onSubmit={submitHandler} className="space-y-4">
+        <form onSubmit={submitHandler} className="dark:textcolor text-black space-y-4">
           <div>
-            <Label className='dark:textcolor'>Name</Label>
+            <Label className="dark:textcolor text-black">Name</Label>
             <Input
               name="fullname"
               value={input.fullname}
               onChange={changeEventHandler}
-              className='dark:bg-black'
+              className="dark:bg-black bg-white"
             />
           </div>
           <div>
-            <Label className='dark:textcolor'>Email</Label>
+            <Label className="dark:textcolor text-black">Email</Label>
             <Input
               name="email"
               type="email"
               readOnly={true}
               value={input.email}
               onChange={changeEventHandler}
-              className='dark:bg-black cursor-not-allowed'
+              className="dark:bg-black bg-white cursor-not-allowed"
             />
           </div>
           <div>
-            <Label className='dark:textcolor'>Phone Number</Label>
+            <Label className="dark:textcolor text-black">Phone Number</Label>
             <Input
               name="phoneNumber"
               value={input.phoneNumber}
               onChange={changeEventHandler}
               readOnly={true}
-              className='dark:bg-black cursor-not-allowed '
+              className="dark:bg-black bg-white cursor-not-allowed "
             />
           </div>
           <div>
-            <Label className='dark:textcolor'>Bio</Label>
-            <Input name="bio" value={input.bio} onChange={changeEventHandler} className='dark:bg-black' />
+            <Label className="dark:textcolor text-black">Bio</Label>
+            <Input
+              name="bio"
+              value={input.bio}
+              onChange={changeEventHandler}
+              className="dark:bg-black bg-white"
+            />
           </div>
           <div>
-            <Label>Skills (comma separated)</Label>
-            <Input 
+            <Label className="dark:textcolor text-black">Skills (comma separated)</Label>
+            <Input
               name="skills"
               value={input.skills}
               onChange={changeEventHandler}
+              className="dark:bg-black bg-white"
             />
           </div>
           <div>
-            <Label className='dark:textcolor'>Resume</Label>
+            <Label className="dark:textcolor text-black">Resume</Label>
             <Input
               name="file"
               type="file"
               accept="application/pdf"
               onChange={fileChangeHandler}
-              className='dark:bg-black'
+              className="dark:bg-black bg-white"
             />
           </div>
           <div>
-            <Button type="submit" className="w-full bg-blue-600 dark:textcolor" disabled={loading}>
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 dark:textcolor"
+              disabled={loading}
+            >
               {loading ? (
                 <Loader2 className="animate-spin h-4 w-4 mr-2" />
               ) : (
