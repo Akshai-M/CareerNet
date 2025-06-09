@@ -32,12 +32,16 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${import.meta.env.VITE_USER_API_END_POINT}/login`, input, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_USER_API_END_POINT}/login`,
+        input,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         navigate("/home");
@@ -57,20 +61,23 @@ const Login = () => {
   }, []);
   return (
     <div>
-      
       <div className="flex items-center justify-center mt-40">
         <form
           onSubmit={submitHandler}
-          className="form-container shadow-[0_4px_12px_rgba(0,0,0,0.4)]  "
+          className="form-container dark:bg-black bg-white border-2 rounded-xl border-blue-600 "
         >
-          <h1 className="font-extrabold text-4xl mb-5 text-blue-600 text-center">Login</h1>
+          <h1 className="font-extrabold text-4xl mb-5 text-blue-600 text-center">
+            Login
+          </h1>
           <div className="my-2">
-            
-            <div className="divinput ">
-              <FontAwesomeIcon icon={faEnvelope} className="text-gray-500 ml-2 mr-4" />
+            <div className="flex items-center border-2 rounded-lg p-[7px] border-[#4f77cd] dark:bg-black bg-white ">
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="text-gray-500 ml-2 mr-4"
+              />
               <input
-              className="input"
-              type="email"
+                className="dark:bg-black bg-white input"
+                type="email"
                 value={input.email}
                 name="email"
                 onChange={changeEventHandler}
@@ -80,9 +87,11 @@ const Login = () => {
           </div>
 
           <div className="my-2 relative py-4">
-            
-            <div className="divinput ">
-            <FontAwesomeIcon icon={faLock} className="text-gray-500 ml-2 mr-4" />
+            <div className="flex items-center border-2 rounded-lg p-[7px] border-[#4f77cd] dark:bg-black bg-white ">
+              <FontAwesomeIcon
+                icon={faLock}
+                className="text-gray-500 ml-2 mr-4"
+              />
 
               <input
                 type={showPassword ? "text" : "password"}
@@ -90,10 +99,10 @@ const Login = () => {
                 name="password"
                 onChange={changeEventHandler}
                 placeholder="Password"
-                className="input"
-                />
+                className=" dark:bg-black bg-white input"
+              />
               <div
-                className="flex cursor-pointer  ml-2"
+                className=" relative cursor-pointer  ml-12"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -102,35 +111,48 @@ const Login = () => {
                   <Eye className="h-5 w-5 text-gray-400" />
                 )}
               </div>
-
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <RadioGroup className="flex items-center gap-4 my-5 ">
+            <RadioGroup className="flex items-center gap-4 my-5">
               <div className="flex items-center space-x-2">
                 <input
-                
                   type="radio"
+                  id="student"
                   name="role"
                   value="student"
                   checked={input.role === "student"}
                   onChange={changeEventHandler}
-                  className="cursor-pointer  "
+                  className="hidden peer"
                 />
-
-                <Label htmlFor="r1" className='textcolor'>Student</Label>
+                <Label
+                  htmlFor="student"
+                  className={`cursor-pointer px-4 py-2 border-2 rounded 
+        peer-checked:bg-blue-600 peer-checked:text-white 
+        text-black dark:textcolor transition border-blue-600`}
+                >
+                  Student
+                </Label>
               </div>
+
               <div className="flex items-center space-x-2">
                 <input
                   type="radio"
+                  id="recruiter"
                   name="role"
                   value="recruiter"
                   checked={input.role === "recruiter"}
                   onChange={changeEventHandler}
-                  className="cursor-pointer "
+                  className="hidden peer"
                 />
-
-                <Label htmlFor="r2" className='textcolor'>Recruiter</Label>
+                <Label
+                  htmlFor="recruiter"
+                  className={`cursor-pointer px-4 py-2 border-2 rounded 
+        peer-checked:bg-blue-600 peer-checked:text-white 
+        text-black dark:textcolor transition border-blue-600`}
+                >
+                  Recruiter
+                </Label>
               </div>
             </RadioGroup>
           </div>
@@ -140,11 +162,14 @@ const Login = () => {
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
             </Button>
           ) : (
-            <Button type="submit" className="my-3 w-full hover:bg-blue-400 bg-blue-600 text-white  rounded">
+            <Button
+              type="submit"
+              className="my-3 w-full hover:bg-blue-400 bg-blue-600 text-white  rounded"
+            >
               Login
             </Button>
           )}
-          <span className="text-sm textcolor">
+          <span className="text-sm dark:textcolor text-black">
             Don't have an account?{" "}
             <Link to="/signup" className="spancolor hover:underline">
               Signup
