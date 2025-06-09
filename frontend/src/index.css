@@ -5,7 +5,7 @@
 @layer base {
   :root {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    --background: 0 0% 100%;
+    --background: 0 0% 97.5%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -83,10 +83,7 @@
     @apply text-blue-600;
   }
   .input {
-    background: #000;
-    width: 100%;
-    padding: 8px;
-    color: white;
+    
     outline: none;
   }
 
