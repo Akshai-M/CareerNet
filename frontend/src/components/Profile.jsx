@@ -32,7 +32,16 @@ const Profile = () => {
           
         </div>
 
-       
+        <div className="my-6">
+          <div className="flex items-center gap-3 my-3 text-gray-700 dark:text-gray-300">
+            <Mail />
+            <span>{user?.email}</span>
+          </div>
+          <div className="flex items-center gap-3 my-3 text-gray-700 dark:text-gray-300">
+            <Contact />
+            <span>{user?.phoneNumber}</span>
+          </div>
+        </div>
 
         <div className="my-6">
           <h1 className="font-semibold text-xl text-gray-800 dark:text-white">
