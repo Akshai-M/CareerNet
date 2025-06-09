@@ -16,9 +16,12 @@ const Navbar = () => {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_USER_API_END_POINT}/logout`, {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_USER_API_END_POINT}/logout`,
+        {
+          withCredentials: true,
+        }
+      );
       if (res.data.success) {
         dispatch(setUser(null));
         navigate("/");
@@ -34,10 +37,10 @@ const Navbar = () => {
       <div className="flex items-center justify-between h-16">
         <div>
           <h1 className="text-2xl font-bold font-sans dark:textcolor italic">
-            Career<span className="spancolor">Net</span> 
+            Career<span className="spancolor">Net</span>
           </h1>
         </div>
-        <div className="flex items-center gap-12   px-8">
+        <div className="flex items-center gap-12 px-8">
           <ul className="flex font-medium items-center gap-5 ">
             {user && user.role === "recruiter" ? (
               <>
@@ -45,7 +48,9 @@ const Navbar = () => {
                   <NavLink
                     to="/admin/companies"
                     className={({ isActive }) =>
-                      `spancolor ${isActive ? "text-blue-600" : "text-blue-300"}`
+                      `spancolor ${
+                        isActive ? "text-blue-600" : "text-blue-300"
+                      }`
                     }
                   >
                     {"<Companies/>"}
@@ -55,7 +60,9 @@ const Navbar = () => {
                   <NavLink
                     to="/admin/jobs"
                     className={({ isActive }) =>
-                      `spancolor ${isActive ? "text-blue-600" : "text-blue-300"}`
+                      `spancolor ${
+                        isActive ? "text-blue-600" : "text-blue-300"
+                      }`
                     }
                   >
                     {"<Jobs/>"}
@@ -68,7 +75,9 @@ const Navbar = () => {
                   <NavLink
                     to="/home"
                     className={({ isActive }) =>
-                      `spancolor ${isActive ? "text-blue-600" : "text-blue-300"}`
+                      `spancolor ${
+                        isActive ? "text-blue-600" : "text-blue-300"
+                      }`
                     }
                   >
                     {"<Home/>"}
@@ -78,7 +87,9 @@ const Navbar = () => {
                   <NavLink
                     to="/jobs"
                     className={({ isActive }) =>
-                      `spancolor ${isActive ? "text-blue-600" : "text-blue-300"}`
+                      `spancolor ${
+                        isActive ? "text-blue-600" : "text-blue-300"
+                      }`
                     }
                   >
                     {"<Jobs/>"}
@@ -88,7 +99,9 @@ const Navbar = () => {
                   <NavLink
                     to="/browse"
                     className={({ isActive }) =>
-                      `spancolor ${isActive ? "text-blue-600" : "text-blue-300"}`
+                      `spancolor ${
+                        isActive ? "text-blue-600" : "text-blue-300"
+                      }`
                     }
                   >
                     {"<Browse/>"}
@@ -97,54 +110,54 @@ const Navbar = () => {
               </>
             )}
           </ul>
-          
-            <Popover >
-              <PopoverTrigger asChild>
-                <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src={user?.profile?.profilePhoto}
-                    alt="@shadcn"
-                  />
-                </Avatar>
-              </PopoverTrigger>
-              <PopoverContent className="w-full">
-                <div className="">
-                  <div className="flex gap-2  items-center">
-                    <Avatar className="cursor-pointer">
-                      <AvatarImage
-                        src={user?.profile?.profilePhoto}
-                        alt="@shadcn"
-                      />
-                    </Avatar>
-                    <div>
-                      <h4 className="font-medium dark:textcolor">{user?.fullname}</h4>
-                      <p className="text-sm dark:textcolor">
-                        {user?.profile?.bio}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col my-2 text-gray-600">
-                    {user && user.role === "student" && (
-                      <div className="flex w-fit items-center gap-2 cursor-pointer">
-                        <User2 />
-                        <Button variant="link">
-                          {" "}
-                          <Link to="/profile" className="darl:textcolor">View Profile</Link>
-                        </Button>
-                      </div>
-                    )}
 
-                    <div className="flex w-fit items-center gap-2 cursor-pointer">
-                      <LogOut />
-                      <button onClick={logoutHandler} variant="link" className='dark:textcolor pl-4 hover:underline'>
-                        Logout
-                      </button>
-                    </div>
+          <Popover className="">
+            <PopoverTrigger asChild>
+              <Avatar className="cursor-pointer">
+                <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
+              </Avatar>
+            </PopoverTrigger>
+            <PopoverContent className="w-full bg-white dark:bg-black dark:textcolor">
+              <div className="">
+                <div className="flex gap-2 items-center">
+                  <Avatar className="cursor-pointer">
+                    <AvatarImage
+                      src={user?.profile?.profilePhoto}
+                      alt="@shadcn"
+                    />
+                  </Avatar>
+                  <div>
+                    <h4 className="font-medium">{user?.fullname}</h4>
+                    <p className="text-sm">{user?.profile?.bio}</p>
                   </div>
                 </div>
-              </PopoverContent>
-            </Popover>
-          
+                <div className="flex flex-col my-2 text-gray-600">
+                  {user && user.role === "student" && (
+                    <div className="flex w-fit items-center gap-2 cursor-pointer">
+                      <User2 />
+                      <Button variant="link">
+                        {" "}
+                        <Link to="/profile" className="">
+                          View Profile
+                        </Link>
+                      </Button>
+                    </div>
+                  )}
+
+                  <div className="flex w-fit items-center gap-2 cursor-pointer">
+                    <LogOut />
+                    <button
+                      onClick={logoutHandler}
+                      variant="link"
+                      className=" text-black dark:textcolor pl-4 hover:underline"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </div>
