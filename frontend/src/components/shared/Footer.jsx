@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold dark:textcolor">Job Hunt</h2>
-            <p className="text-sm dark:textcolor">© 2025 CareerNet. All rights reserved.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">© {new Date().getFullYear()} CareerNet. All rights reserved.</p>
           </div>
           
           <div className="flex space-x-4 mt-4 md:mt-0">
