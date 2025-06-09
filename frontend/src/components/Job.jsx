@@ -16,7 +16,7 @@ const Job = ({ job }) => {
   };
 
   return (
-    <div className="p-5 rounded-md shadow-xl dark:bg-black border border-gray-100">
+    <div className="p-5 rounded-md bg-white dark:bg-black border border-gray-300 dark:border-gray-100">
       <div className="flex items-center justify-between">
         <p className="text-sm dark:text-gray-500">
           {daysAgoFunction(job?.createdAt) === 0
@@ -29,8 +29,8 @@ const Job = ({ job }) => {
       </div>
 
       <div className="flex items-center gap-2 my-2">
-        <Button className="p-6" variant="outline" size="icon">
-          <Avatar>
+        <Button className="p-6 bg-black " variant="outline" size="icon">
+          <Avatar  >
             <AvatarImage  src={job?.company?.logo} />
           </Avatar>
         </Button>
@@ -49,7 +49,7 @@ const Job = ({ job }) => {
           className="dark:bg-gray-400 text-blue-700 font-bold px-3 py-1 rounded-md"
           variant="ghost"
         >
-          {job?.position} Positions
+          {job?.position - job?.applications.length} Positions
         </Badge>
         <Badge
           className="dark:bg-gray-400 text-blue-700 font-bold px-3 py-1 rounded-md"
