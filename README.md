@@ -36,4 +36,21 @@ CareerNet is a SaaS-based job portal platform built using the MERN stack (MongoD
 
 ---
 
+## Setup Instructions
 
+1. **Install dependencies for frontend**
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+2. **Install dependencies for backend**
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+2. **Install dependencies for chatbot**
+   ```bash
+   cd chatbot
+   pip install requirement.txt
+   run app.py
+    
