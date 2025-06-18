@@ -50,7 +50,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `${import.meta.env.VITE_USER_API_END_POINT}/profile/update`,
+        `${import.meta.env.VITE_USER_API_END_POINT}/profile/update` || `https://careernet.onrender.com/profile/update`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
