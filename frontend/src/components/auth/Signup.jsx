@@ -112,7 +112,7 @@ const Signup = () => {
     try {
       dispatch(setLoading(true));
       const res = await axios.post(
-        `${import.meta.env.VITE_USER_API_END_POINT}/register`,
+        `${import.meta.env.VITE_USER_API_END_POINT}/register` || `https://careernet.onrender.com/register`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
