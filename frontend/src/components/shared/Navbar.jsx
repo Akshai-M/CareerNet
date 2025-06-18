@@ -17,7 +17,7 @@ const Navbar = () => {
   const logoutHandler = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_USER_API_END_POINT}/logout`,
+        `${import.meta.env.VITE_USER_API_END_POINT}/logout` || `https://careernet.onrender.com/logout`,
         {
           withCredentials: true,
         }
